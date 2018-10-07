@@ -63,37 +63,37 @@ def initialize
     return turn_count % 2 == 0 ? "X" : "O"
   end
 
-  def play(board)
-    until over?(board)
-      turn(board)
+  def play
+    until over?
+      turn
     end
-    if winner = winner(board)
-      puts("Congratulations #{winner}!")
-    elsif draw?(board)
+    if win = winner
+      puts("Congratulations #{win}!")
+    elsif draw?
       puts("Cat's Game!")
     end
   end
 
-  def won?(board)
+  def won?
     WIN_COMBINATIONS.detect do |winRow|
-      winRow.all? {|spot| board[spot] == "X"} || winRow.all? {|spot| board[spot] == "O"}
+      winRow.all? {|spot| @board[spot] == "X"} || winRow.all? {|spot| @board[spot] == "O"}
     end
   end
 
-  def full?(board)
-    board.all? {|i| i == "X" || i == "O"}
+  def full?
+    @board.all? {|i| i == "X" || i == "O"}
   end
 
-  def draw?(board)
-    return full?(board) && !won?(board)
+  def draw?
+    return full? && !won?
   end
 
-  def over?(board)
-    return draw?(board) || won?(board)
+  def over?
+    return draw? || won?
   end
 
-  def winner(board)
-    if win = won?(board)
+  def winner
+    if win = won?
       return board[win[0]]
     end
   end
