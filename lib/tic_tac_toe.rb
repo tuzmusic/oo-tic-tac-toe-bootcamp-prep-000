@@ -4,9 +4,9 @@ def initialize
   @board = Array.new(9, " ")
 end
 
-def position_taken?(index)
-  !(@board[index].nil? || @board[index] == " ")
-end
+# def position_taken?(index)
+#   !(@board[index].nil? || @board[index] == " ")
+# end
 
 WIN_COMBINATIONS = [
   [0,1,2],
